@@ -1,6 +1,6 @@
 import SwipeDrawer from "./SwipeDrawer";
 import { Box } from "@mui/material";
-import Notes from "./notes/notes";
+import Notes from "./notes/Notes";
 
 const Home = () => {
   return (
