@@ -3,7 +3,9 @@ import { Box, TextField, ClickAwayListener } from "@mui/material";
 //clickAwayListner-Detect if a click event happened outside of an element. It listens for clicks that occur somewhere in the document.
 import { styled } from "@mui/material/styles";
 //useRef-used to access a DOM element directly.
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
+import { DataContext } from "../../context/DataProvider";
+import { v4 as uuid } from "uuid";
 
 const Container = styled(Box)`
   display: flex;
@@ -17,9 +19,21 @@ const Container = styled(Box)`
   min-height: 30px;
 `;
 
+const note = {
+  id: "",
+  title: "",
+  content: "",
+};
+
 const Form = () => {
   //show textfield
   const [showTextField, setShowTextField] = useState(false);
+
+  //adding a particular note
+  const [addNote, setAddNote] = useState({ ...note, id: uuid() });
+
+  //using the context
+  const { setNotes } = useContext(DataContext);
 
   const containerRef = useRef();
 
@@ -33,7 +47,19 @@ const Form = () => {
     setShowTextField(false);
     //decreasing height
     containerRef.current.style.minHeight = "30px";
+    setAddNote({ ...note, id: uuid() });
+
+    if (addNote.title || addNote.content) {
+      setNotes((prevArr) => [addNote, ...prevArr]);
+    }
   };
+
+  //onChange
+  const onTextChange = (e) => {
+    let changeNote = { ...addNote, [e.target.name]: e.target.value }; //targeting name and changing the value
+    setAddNote(changeNote);
+  };
+
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
       <Container ref={containerRef}>
@@ -43,6 +69,9 @@ const Form = () => {
             variant="standard"
             InputProps={{ disableUnderline: true }}
             style={{ marginBottom: 10 }}
+            name="title"
+            onChange={(e) => onTextChange(e)}
+            value={addNote.title}
           />
         )}
         <TextField
@@ -52,6 +81,9 @@ const Form = () => {
           variant="standard"
           InputProps={{ disableUnderline: true }}
           onClick={onTextAreaClick}
+          name="content"
+          onChange={(e) => onTextChange(e)}
+          value={addNote.content}
         />
       </Container>
     </ClickAwayListener>
