@@ -16,7 +16,7 @@ const StyledCard = styled(Card)`
   border-radius: 8px;
 `;
 
-const Note = ({ note }) => {
+const DeleteNote = ({ note }) => {
   //datacontext
   const { notes, setNotes, setArchiveNotes, setDeletedNotes } =
     useContext(DataContext);
@@ -53,4 +53,4 @@ const Note = ({ note }) => {
   );
 };
 
-export default Note;
+export default DeleteNote;
