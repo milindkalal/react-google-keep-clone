@@ -13,7 +13,7 @@ const Header = styled(AppBar)`
 const Heading = styled(Typography)`
   color: #5f6368;
   font-size: 24px;
-  margin-left: 20px;
+  margin-left: 25px;
 `;
 
 const HeaderBar = ({ open, handleDrawer }) => {
@@ -23,11 +23,9 @@ const HeaderBar = ({ open, handleDrawer }) => {
     <Header open={open}>
       <Toolbar>
         <IconButton
-          onClick={handleDrawer}
+          onClick={() => handleDrawer()}
+          sx={{ marginRight: "20px" }}
           edge="start"
-          sx={{
-            marginRight: "20px",
-          }}
         >
           <Menu />
         </IconButton>

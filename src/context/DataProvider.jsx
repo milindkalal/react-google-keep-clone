@@ -1,14 +1,12 @@
-import { createContext } from "react";
-import { useState } from "react";
+import { createContext, useState } from "react";
 
 export const DataContext = createContext(null);
 
 const DataProvider = ({ children }) => {
   const [notes, setNotes] = useState([]);
   const [archiveNotes, setArchiveNotes] = useState([]);
-  const [deletedNotes, setDeletedNotes] = useState([]);
-
-  //children-Home comp
+  const [deleteNotes, setDeleteNotes] = useState([]);
+  //children home comp
   return (
     <DataContext.Provider
       value={{
@@ -16,8 +14,8 @@ const DataProvider = ({ children }) => {
         setNotes,
         archiveNotes,
         setArchiveNotes,
-        deletedNotes,
-        setDeletedNotes,
+        deleteNotes,
+        setDeleteNotes,
       }}
     >
       {children}

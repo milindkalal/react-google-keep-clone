@@ -14,7 +14,6 @@ const Home = () => {
           <Route path="/archive" element={<Archives />} />
           <Route path="/delete" element={<DeleteNotes />} />
         </Routes>
-        <Notes />
       </Router>
     </Box>
   );

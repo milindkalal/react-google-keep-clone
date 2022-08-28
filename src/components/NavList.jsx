@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -14,19 +15,19 @@ const NavList = () => {
     {
       id: 1,
       name: "Notes",
-      icon: <Lightbulb />,
+      icon: <Lightbulb className="color" />,
       route: "/",
     },
     {
       id: 2,
       name: "Archive",
-      icon: <Archive />,
+      icon: <Archive className="color" />,
       route: "/archive",
     },
     {
       id: 3,
       name: "Trash",
-      icon: <Delete />,
+      icon: <Delete className="color" />,
       route: "/delete",
     },
   ];
@@ -36,7 +37,7 @@ const NavList = () => {
       {navList.map((list) => (
         <ListItem button key={list.id}>
           <Link
-            to={list.route}
+            to={`${list.route}`}
             style={{
               textDecoration: "none",
               display: "flex",

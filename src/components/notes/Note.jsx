@@ -18,21 +18,21 @@ const StyledCard = styled(Card)`
 
 const Note = ({ note }) => {
   //datacontext
-  const { notes, setNotes, setArchiveNotes, setDeletedNotes } =
+  const { notes, setNotes, setArchiveNotes, setDeleteNotes } =
     useContext(DataContext);
 
   // ArchiveNote
   const archiveNote = (note) => {
-    const updatedNote = notes.filter((data) => data.id !== note.id);
+    const updatedNotes = notes.filter((data) => data.id !== note.id);
 
-    setNotes(updatedNote);
+    setNotes(updatedNotes);
     setArchiveNotes((prevArr) => [note, ...prevArr]);
   };
   //DeleteNote
   const deleteNote = (note) => {
-    const updatedNote = notes.filter((data) => data.id !== note.id);
-    setNotes(updatedNote);
-    setDeletedNotes((prevArr) => [note, ...prevArr]);
+    const updatedNotes = notes.filter((data) => data.id !== note.id);
+    setNotes(updatedNotes);
+    setDeleteNotes((prevArr) => [note, ...prevArr]);
   };
 
   return (

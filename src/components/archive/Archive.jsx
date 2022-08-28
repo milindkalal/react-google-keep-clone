@@ -16,38 +16,37 @@ const StyledCard = styled(Card)`
   border-radius: 8px;
 `;
 
-const Archive = ({ note }) => {
+const Archive = ({ archive }) => {
   //datacontext
-  const { notes, setNotes, archiveNotes, setArchiveNotes, setDeletedNotes } =
+  const { setNotes, archiveNotes, setArchiveNotes, setDeletedNotes } =
     useContext(DataContext);
 
   // ArchiveNote
-  const UnarchiveNote = (note) => {
-    const updatedNote = notes.filter((data) => data.id !== note.id);
-
+  const unArchiveNote = (archive) => {
+    const updatedNote = archiveNotes.filter((data) => data.id !== archive.id);
     setArchiveNotes(updatedNote);
-    setNotes((prevArr) => [note, ...prevArr]);
+    setNotes((prevArr) => [archive, ...prevArr]);
   };
   //DeleteNote
-  const deleteNote = (note) => {
-    const updatedNote = archiveNotes.filter((data) => data.id !== note.id);
+  const deleteNote = (archive) => {
+    const updatedNote = archiveNotes.filter((data) => data.id !== archive.id);
     setArchiveNotes(updatedNote);
-    setDeletedNotes((prevArr) => [note, ...prevArr]);
+    setDeletedNotes((prevArr) => [archive, ...prevArr]);
   };
 
   return (
     <StyledCard>
       <CardContent>
-        <Typography>{note.title}</Typography>
-        <Typography>{note.content}</Typography>
+        <Typography>{archive.title}</Typography>
+        <Typography>{archive.content}</Typography>
       </CardContent>
       <CardActions>
         <Unarchive
           fontSize="small"
           style={{ marginLeft: "auto" }}
-          onClick={() => UnarchiveNote(note)}
+          onClick={() => unArchiveNote(archive)}
         />
-        <Delete fontSize="small" onClick={() => deleteNote(note)} />
+        <Delete fontSize="small" onClick={() => deleteNote(archive)} />
       </CardActions>
     </StyledCard>
   );
