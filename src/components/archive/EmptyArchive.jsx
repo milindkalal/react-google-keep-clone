@@ -5,11 +5,20 @@ import { styled } from "@mui/material/styles";
 const Arc = styled(Archive)`
   font-size: 120px;
   color: #f5f5f5;
+  @media (max-width: 425px) {
+    font-size: 100px;
+    padding-right: 35px;
+  }
 `;
 
 const Text = styled(Typography)`
   color: #80868b;
   font-size: 22px;
+  @media (max-width: 425px) {
+    text-align: center;
+    font-size: 18px;
+    padding-right: 30px;
+  }
 `;
 
 const Container = styled(Box)`

@@ -14,6 +14,11 @@ const StyledCard = styled(Card)`
   box-shadow: none;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
+  @media (max-width: 425px) {
+    width: 250px;
+    padding: 0.1rem;
+    margin-left: 10px;
+  }
 `;
 
 const Note = ({ note }) => {

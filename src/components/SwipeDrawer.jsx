@@ -6,7 +6,7 @@ import MuiDrawer from "@mui/material/Drawer";
 import HeaderBar from "./HeaderBar";
 import NavList from "./NavList";
 
-const drawerWidth = 240;
+const drawerWidth = 230;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -52,14 +52,18 @@ const Drawer = styled(MuiDrawer, {
 
 function SwipeDrawer() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   const handleDrawer = () => {
     setOpen((prevState) => !prevState);
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box
+      sx={{
+        display: "flex",
+      }}
+    >
       <HeaderBar
         //passing props to HeaderBar
         open={open}

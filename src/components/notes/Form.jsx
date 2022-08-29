@@ -17,6 +17,11 @@ const Container = styled(Box)`
   border-color: #e0e0e0;
   margin: auto;
   min-height: 30px;
+  @media (max-width: 425px) {
+    width: 250px;
+    padding: 8px;
+    margin-left: auto;
+  }
 `;
 
 const note = {
